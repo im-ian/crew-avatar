@@ -1,2 +1,2 @@
 export * from "@crew-avatar/core";
-export { CrewAvatarComponent } from "./crew-avatar.component";
+export { Avatar } from "./crew-avatar.component";

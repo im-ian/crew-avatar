@@ -1,6 +1,6 @@
 import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { CrewAvatar, STATES } from "@crew-avatar/react";
+import { Avatar, STATES } from "@crew-avatar/react";
 
 const SHOWN = ["circle", "crown", "full-moon"];
 
@@ -11,14 +11,14 @@ function App() {
     <main>
       <h1>@crew-avatar/react</h1>
       <div className="hero">
-        <CrewAvatar shape="cup" state={state} size={96} seed="hero" label={`cup, ${state}`} />
+        <Avatar shape="cup" state={state} size={96} seed="hero" label={`cup, ${state}`} />
         <button onClick={() => setN(n + 1)}>Next state ({state})</button>
       </div>
       {SHOWN.map((shape) => (
         <div className="row" key={shape}>
           {STATES.map((s) => (
             <figure key={s}>
-              <CrewAvatar shape={shape} state={s} size={56} seed={shape + s} />
+              <Avatar shape={shape} state={s} size={56} seed={shape + s} />
               <figcaption>{s}</figcaption>
             </figure>
           ))}

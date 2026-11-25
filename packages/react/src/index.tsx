@@ -3,10 +3,10 @@ import { mountAvatar, type AvatarHandle, type AvatarOptions } from "@crew-avatar
 
 export * from "@crew-avatar/core";
 
-export type CrewAvatarProps = AvatarOptions &
+export type AvatarProps = AvatarOptions &
   Omit<HTMLAttributes<HTMLSpanElement>, "color"> & { className?: string; style?: CSSProperties };
 
-export function CrewAvatar({ shape, color, state, look, size, seed, label, ...rest }: CrewAvatarProps) {
+export function Avatar({ shape, color, state, look, size, seed, label, ...rest }: AvatarProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const handle = useRef<AvatarHandle | null>(null);
   const options: AvatarOptions = { shape, color, state, look, size, seed, label };

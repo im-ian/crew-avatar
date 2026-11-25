@@ -1,12 +1,12 @@
 import "@angular/compiler"; // JIT keeps this demo a single esbuild step; real apps use the Angular CLI.
 import { Component, signal } from "@angular/core";
 import { bootstrapApplication } from "@angular/platform-browser";
-import { CrewAvatarComponent, STATES } from "@crew-avatar/angular";
+import { Avatar, STATES } from "@crew-avatar/angular";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [CrewAvatarComponent],
+  imports: [Avatar],
   template: `
     <main>
       <h1>&#64;crew-avatar/angular</h1>

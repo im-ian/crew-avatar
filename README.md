@@ -11,8 +11,8 @@ They started out as the bot faces in Crew. This repo ships the same engine for p
 | Package | For |
 | --- | --- |
 | [`@crew-avatar/vanilla`](packages/vanilla) | Plain HTML: a `<crew-avatar>` custom element plus a drop-in `<script>` build |
-| [`@crew-avatar/react`](packages/react) | React 18+ `<CrewAvatar />` |
-| [`@crew-avatar/vue`](packages/vue) | Vue 3 `<CrewAvatar />` |
+| [`@crew-avatar/react`](packages/react) | React 18+ `<Avatar />` |
+| [`@crew-avatar/vue`](packages/vue) | Vue 3 `<Avatar />` |
 | [`@crew-avatar/angular`](packages/angular) | Angular 17+ standalone `<crew-avatar>` |
 | [`@crew-avatar/core`](packages/core) | The framework-free engine the others wrap: shape data, renderer, `mountAvatar()` |
 
@@ -33,30 +33,30 @@ Change any attribute and the face updates. For a classic script tag, `dist/crew-
 ### React
 
 ```tsx
-import { CrewAvatar } from "@crew-avatar/react";
+import { Avatar } from "@crew-avatar/react";
 
-<CrewAvatar shape="cup" state={busy ? "working" : "idle"} size={48} seed={user.id} label={user.name} />;
+<Avatar shape="cup" state={busy ? "working" : "idle"} size={48} seed={user.id} label={user.name} />;
 ```
 
 ### Vue
 
 ```vue
 <script setup>
-import { CrewAvatar } from "@crew-avatar/vue";
+import { Avatar } from "@crew-avatar/vue";
 </script>
 
 <template>
-  <CrewAvatar shape="ghostish" :state="state" :size="48" :seed="user.id" />
+  <Avatar shape="ghostish" :state="state" :size="48" :seed="user.id" />
 </template>
 ```
 
 ### Angular
 
 ```ts
-import { CrewAvatarComponent } from "@crew-avatar/angular";
+import { Avatar } from "@crew-avatar/angular";
 
 @Component({
-  imports: [CrewAvatarComponent],
+  imports: [Avatar],
   template: `<crew-avatar shape="full-moon" [state]="state" [size]="48" [seed]="user.id" />`,
 })
 ```

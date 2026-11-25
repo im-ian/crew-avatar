@@ -8,7 +8,7 @@ const ATTRS = ["shape", "color", "state", "look", "size", "seed", "label"] as co
  * `<crew-avatar shape="crown" color="#4da3ff" state="working" size="64"></crew-avatar>`
  * Light DOM, so the stylesheet and your CSS variables reach it.
  */
-export class CrewAvatarElement extends HTMLElement {
+export class Avatar extends HTMLElement {
   static observedAttributes = [...ATTRS];
   #handle: AvatarHandle | null = null;
 
@@ -34,11 +34,11 @@ export class CrewAvatarElement extends HTMLElement {
 }
 
 if (typeof customElements !== "undefined" && !customElements.get("crew-avatar")) {
-  customElements.define("crew-avatar", CrewAvatarElement);
+  customElements.define("crew-avatar", Avatar);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "crew-avatar": CrewAvatarElement;
+    "crew-avatar": Avatar;
   }
 }

@@ -8,7 +8,7 @@ import { mountAvatar, type AvatarHandle, type AvatarOptions, type AvatarState, t
   template: "",
   encapsulation: ViewEncapsulation.None,
 })
-export class CrewAvatarComponent implements OnInit, OnChanges, OnDestroy {
+export class Avatar implements OnInit, OnChanges, OnDestroy {
   @Input() shape?: string | null;
   @Input() color?: string | null;
   @Input() state?: AvatarState | null;

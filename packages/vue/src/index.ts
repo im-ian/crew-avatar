@@ -3,9 +3,9 @@ import { mountAvatar, type AvatarHandle, type AvatarOptions, type AvatarState, t
 
 export * from "@crew-avatar/core";
 
-/** `<CrewAvatar shape="crown" state="working" :size="64" />` */
-export const CrewAvatar = defineComponent({
-  name: "CrewAvatar",
+/** `<Avatar shape="crown" state="working" :size="64" />` */
+export const Avatar = defineComponent({
+  name: "Avatar",
   props: {
     shape: String,
     color: String,
@@ -34,4 +34,4 @@ export const CrewAvatar = defineComponent({
   },
 });
 
-export default CrewAvatar;
+export default Avatar;
