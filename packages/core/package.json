@@ -14,7 +14,8 @@
     "./crew-avatar.css": "./dist/crew-avatar.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "third_party"
   ],
   "sideEffects": [
     "*.css"

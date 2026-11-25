@@ -1,0 +1,17 @@
+Material Shapes contour data
+Copyright 2024 The Android Open Source Project
+Licensed under the Apache License, Version 2.0. See LICENSE in this directory.
+
+Source: AndroidX Compose MaterialShapes.kt
+https://github.com/androidx/androidx/blob/9a589fa61f8661e0cbef9123dcc98d3c1f655fc7/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt
+
+Used in packages/core/src/shapes.ts for these 17 shapes: square, slanted, arch,
+fan, arrow, semi-circle, oval, clam-shell, gem, sunny, ghostish, clover, burst,
+flower, pixel-circle, pixel-triangle, bun.
+
+The contours came by way of Sidekick Studio (https://github.com/hanana-kick/sidekick),
+which generated them with androidx.graphics:graphics-shapes-android 1.1.0.
+
+Changes in crew-avatar: each contour is stored as SVG path data in a 64x64 box,
+and crew-avatar adds a bounding box, an ink-coverage factor and an eye position
+for each shape. The other 33 shapes in shapes.ts are not from this source.

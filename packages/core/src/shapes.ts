@@ -1,6 +1,9 @@
-// Generated from the Crew app's face table. Silhouettes partly from Sidekick Studio (https://sidekick.hananakick.cc/).
 import type { ShapeDef } from "./types.js";
 
+/*! crew-avatar shapes. The contours of square, slanted, arch, fan, arrow, semi-circle, oval,
+ * clam-shell, gem, sunny, ghostish, clover, burst, flower, pixel-circle, pixel-triangle and bun are
+ * Material Shapes data, Copyright 2024 The Android Open Source Project, Apache-2.0
+ * (https://www.apache.org/licenses/LICENSE-2.0). See third_party/material-shapes/NOTICE. */
 export const SWATCHES = ["#ff8a3d","#4da3ff","#2ec4b6","#8e8e93","#ff5a5a","#7dcc5e","#ff7aad","#9b7dff","#ffb347","#3a3a3c","#ffcc37","#64d2ff","#5e5ce6","#ff375f","#bf5af2","#a2845e"] as const;
 
 export const SHAPES = {

@@ -136,8 +136,8 @@ pnpm serve       # http://localhost:5173/examples/vanilla/ (also /react/, /vue/,
 
 ## Credits
 
-Some silhouettes come from [Sidekick Studio](https://sidekick.hananakick.cc/).
+17 of the shapes (square, slanted, arch, fan, arrow, semi-circle, oval, clam-shell, gem, sunny, ghostish, clover, burst, flower, pixel-circle, pixel-triangle, bun) are [Material Shapes](https://github.com/androidx/androidx/blob/9a589fa61f8661e0cbef9123dcc98d3c1f655fc7/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt) contours, © 2024 The Android Open Source Project, under the Apache License 2.0. They came by way of [Sidekick Studio](https://github.com/hanana-kick/sidekick). See [`packages/core/third_party/material-shapes`](packages/core/third_party/material-shapes).
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE), except the Material Shapes contour data noted above (Apache 2.0).
