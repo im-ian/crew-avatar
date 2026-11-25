@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" data-crew-avatar-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>crew-avatar · catalog</title>
+    <style>
+      :root {
+        --page-chip: #3a3a3c;
+        --page-chip-hover: #48484a;
+        color-scheme: dark;
+      }
+      [data-crew-avatar-theme="light"] {
+        --page-chip: #ebebeb;
+        --page-chip-hover: #e0e0e0;
+        color-scheme: light;
+      }
+      html, body { margin: 0; background: var(--crew-avatar-bg); color: var(--crew-avatar-ink); }
+      body { font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+      .cat { max-width: 1080px; margin: 0 auto; padding: 24px 24px 80px; box-sizing: border-box; }
+      h1 { font-size: 20px; margin: 0 16px 0 0; }
+      h2 { font-size: 15px; margin: 36px 0 14px; color: var(--crew-avatar-muted); font-weight: 600; }
+      button { background: var(--page-chip); color: var(--crew-avatar-ink); border: 0; border-radius: 6px; padding: 6px 10px; font: inherit; cursor: pointer; }
+      button:hover { background: var(--page-chip-hover); }
+      button.on { background: var(--crew-avatar-working); color: #fff; }
+      .bar { position: sticky; top: 0; z-index: 50; background: var(--crew-avatar-bg); padding: 14px 0; border-bottom: 1px solid var(--crew-avatar-line); display: flex; flex-direction: column; gap: 10px; }
+      .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+      .lab { color: var(--crew-avatar-muted); min-width: 44px; }
+      .seg { display: flex; flex-wrap: wrap; gap: 4px; }
+      .swatches { display: flex; flex-wrap: wrap; gap: 6px; }
+      .swatches button { width: 20px; height: 20px; padding: 0; border-radius: 50%; outline-offset: 2px; }
+      .swatches button.on { outline: 2px solid var(--crew-avatar-ink); }
+      .pick { display: flex; align-items: center; gap: 8px; }
+      .pick input[type="color"] { width: 28px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+      .pick input[type="text"] { width: 76px; background: var(--page-chip); color: var(--crew-avatar-ink); border: 0; border-radius: 6px; padding: 5px 8px; font: 12px ui-monospace, monospace; }
+      input[type="range"] { width: 120px; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--cell, 100px), 1fr)); gap: 18px 10px; }
+      .grid figure { margin: 0; display: grid; justify-items: center; align-content: start; gap: 8px; padding: 14px 4px 8px; border-radius: 10px; cursor: pointer; }
+      .grid figure:hover { background: var(--page-chip); }
+      .grid figure.on { outline: 1.5px solid var(--crew-avatar-working); }
+      figcaption { font-size: 11px; color: var(--crew-avatar-muted); text-align: center; }
+      .box { display: grid; place-items: center; }
+      .detail { border: 1px solid var(--crew-avatar-line); border-radius: 12px; padding: 16px; margin-top: 18px; }
+      [hidden] { display: none !important; }
+      .detail h2 { margin: 0; color: var(--crew-avatar-ink); }
+      .states { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 18px 10px; margin-top: 12px; }
+      .states figure { margin: 0; display: grid; justify-items: center; gap: 10px; padding-top: 12px; }
+      .hint { color: var(--crew-avatar-muted); font-size: 12.5px; margin: 16px 0 0; }
+    </style>
+  </head>
+  <body>
+    <main class="cat">
+      <div class="bar">
+        <div class="row">
+          <h1>crew-avatar</h1>
+          <span class="lab" id="count"></span>
+          <button type="button" id="theme">Light</button>
+          <button type="button" id="replay">Replay</button>
+        </div>
+        <div class="row"><span class="lab">State</span><div class="seg" id="states"></div></div>
+        <div class="row" id="lookRow"><span class="lab">Motion</span><div class="seg" id="looks"></div></div>
+        <div class="row">
+          <span class="lab">Color</span>
+          <div class="swatches" id="swatches"></div>
+          <div class="pick">
+            <input type="color" id="picker" aria-label="Pick a color" />
+            <input type="text" id="hex" spellcheck="false" aria-label="Hex color" />
+          </div>
+          <button type="button" id="mix">Color per character</button>
+        </div>
+        <div class="row">
+          <span class="lab">Size</span>
+          <input type="range" id="size" min="24" max="140" value="64" aria-label="Size" />
+          <span class="lab" id="sizeOut">64px</span>
+        </div>
+      </div>
+
+      <section class="detail" id="detail" hidden>
+        <div class="row" style="justify-content: space-between">
+          <h2 id="detailTitle"></h2>
+          <button type="button" id="close">Close</button>
+        </div>
+        <div class="states" id="detailStates"></div>
+      </section>
+
+      <section>
+        <h2 id="gridTitle"></h2>
+        <div class="grid" id="grid"></div>
+        <p class="hint">Click a character to see all of its states above. Idle eyes follow your pointer.</p>
+      </section>
+    </main>
+
+    <!-- Built by `pnpm build`. From a CDN: https://unpkg.com/@crew-avatar/vanilla/dist/crew-avatar.js -->
+    <script type="module">
+      import { SHAPE_NAMES, SWATCHES, WORK_LOOKS } from "../../packages/vanilla/dist/crew-avatar.js";
+
+      const STATES = [
+        ["idle", "Idle"], ["working", "Working"], ["blocked", "Blocked"], ["exited", "Asleep"],
+        ["happy", "Done"], ["success", "Success"], ["failure", "Failure"], ["question", "Question"],
+      ];
+      const LOOK_LABELS = { random: "Mixed", hustle: "Hustle", magnifier: "Magnifier", laptop: "Laptop", checklist: "Checklist", keyboard: "Keyboard" };
+      const ui = { state: "idle", look: "random", color: SWATCHES[1], mix: false, size: 64, picked: null, light: false };
+      const $ = (id) => document.getElementById(id);
+
+      const colorAt = (i) => (ui.mix ? SWATCHES[i % SWATCHES.length] : ui.color);
+      const lookAt = (i) => (ui.look === "random" ? WORK_LOOKS[i % WORK_LOOKS.length] : ui.look);
+
+      function face(shape, i, state, size, seed) {
+        const look = state === "working" ? ` look="${lookAt(i)}"` : "";
+        return `<div class="box" style="width:${size}px;height:${size}px"><crew-avatar shape="${shape}" color="${colorAt(i)}" state="${state}"${look} size="${size}" seed="${seed}"></crew-avatar></div>`;
+      }
+
+      function segment(el, items, value, onPick) {
+        el.innerHTML = items.map(([key, label]) => `<button type="button" data-key="${key}" class="${key === value ? "on" : ""}">${label}</button>`).join("");
+        el.onclick = (e) => {
+          const key = e.target.closest("button")?.dataset.key;
+          if (key) onPick(key);
+        };
+      }
+
+      function renderGrid() {
+        const label = STATES.find(([k]) => k === ui.state)[1];
+        $("gridTitle").textContent = ui.state === "working" && ui.look !== "random" ? `${label} · ${LOOK_LABELS[ui.look]}` : label;
+        $("grid").style.setProperty("--cell", `${Math.max(96, ui.size + 36)}px`);
+        $("grid").innerHTML = SHAPE_NAMES.map(
+          (shape, i) => `<figure data-shape="${shape}" class="${ui.picked === shape ? "on" : ""}" title="Show every state">${face(shape, i, ui.state, ui.size, shape)}<figcaption>${shape}</figcaption></figure>`,
+        ).join("");
+      }
+
+      function renderDetail() {
+        $("detail").hidden = !ui.picked;
+        if (!ui.picked) return;
+        const i = SHAPE_NAMES.indexOf(ui.picked);
+        $("detailTitle").textContent = `${ui.picked} · every state`;
+        $("detailStates").innerHTML = STATES.map(([state, label]) => `<figure>${face(ui.picked, i, state, 88, ui.picked + state)}<figcaption>${label}</figcaption></figure>`).join("");
+      }
+
+      function renderControls() {
+        $("count").textContent = `${SHAPE_NAMES.length} shapes`;
+        segment($("states"), STATES, ui.state, (k) => ((ui.state = k), render()));
+        $("lookRow").hidden = ui.state !== "working";
+        segment($("looks"), Object.entries(LOOK_LABELS), ui.look, (k) => ((ui.look = k), render()));
+        $("swatches").innerHTML = SWATCHES.map((c) => `<button type="button" data-color="${c}" aria-label="${c}" style="background:${c}" class="${!ui.mix && c === ui.color ? "on" : ""}"></button>`).join("");
+        $("picker").value = ui.color;
+        if (document.activeElement !== $("hex")) $("hex").value = ui.color;
+        $("mix").classList.toggle("on", ui.mix);
+        $("theme").textContent = ui.light ? "Dark" : "Light";
+        $("sizeOut").textContent = `${ui.size}px`;
+      }
+
+      function render() {
+        renderControls();
+        renderDetail();
+        renderGrid();
+      }
+
+      const setColor = (c) => ((ui.color = c), (ui.mix = false), render());
+      $("swatches").onclick = (e) => e.target.dataset.color && setColor(e.target.dataset.color);
+      $("picker").oninput = (e) => setColor(e.target.value);
+      $("hex").oninput = (e) => /^#[0-9a-fA-F]{6}$/.test(e.target.value.trim()) && setColor(e.target.value.trim().toLowerCase());
+      $("mix").onclick = () => ((ui.mix = !ui.mix), render());
+      $("size").oninput = (e) => ((ui.size = Number(e.target.value)), render());
+      $("replay").onclick = render;
+      $("close").onclick = () => ((ui.picked = null), render());
+      $("theme").onclick = () => {
+        ui.light = !ui.light;
+        document.documentElement.dataset.crewAvatarTheme = ui.light ? "light" : "dark";
+        renderControls();
+      };
+      $("grid").onclick = (e) => {
+        const fig = e.target.closest("figure");
+        if (!fig) return;
+        ui.picked = fig.dataset.shape;
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+      render();
+    </script>
+  </body>
+</html>
