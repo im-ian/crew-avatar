@@ -1,0 +1,41 @@
+{
+  "name": "@crew-avatar/core",
+  "version": "0.1.0",
+  "description": "Animated bot faces: 50 shapes, 8 states, framework-free engine behind every crew-avatar package.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./crew-avatar.css": "./dist/crew-avatar.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p . && node -e \"import('./dist/style.js').then(m=>require('fs').writeFileSync('dist/crew-avatar.css',m.CSS.trim()+'\\n'))\"",
+    "test": "node --test test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/im-ian/crew-avatar.git",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "avatar",
+    "bot",
+    "character",
+    "svg",
+    "animation"
+  ],
+  "author": "im-ian",
+  "homepage": "https://github.com/im-ian/crew-avatar#readme",
+  "bugs": "https://github.com/im-ian/crew-avatar/issues"
+}

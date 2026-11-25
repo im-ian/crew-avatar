@@ -1,0 +1,21 @@
+{
+  "name": "crew-avatar-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "build": "pnpm --filter @crew-avatar/core build && pnpm --filter './packages/*' --filter '!@crew-avatar/core' build",
+    "test": "pnpm --filter @crew-avatar/core test",
+    "examples": "node examples/build.mjs",
+    "serve": "esbuild --servedir=. --serve=5173"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "~6.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
