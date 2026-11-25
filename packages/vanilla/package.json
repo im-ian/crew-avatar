@@ -1,0 +1,44 @@
+{
+  "name": "@crew-avatar/vanilla",
+  "version": "0.1.0",
+  "description": "crew-avatar for plain HTML: a <crew-avatar> custom element and a drop-in <script> build.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/crew-avatar.iife.js",
+  "jsdelivr": "./dist/crew-avatar.iife.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./crew-avatar.js": "./dist/crew-avatar.js",
+    "./crew-avatar.iife.js": "./dist/crew-avatar.iife.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": true,
+  "scripts": {
+    "build": "rm -rf dist && tsc -p . && esbuild src/index.ts --bundle --format=esm --minify --outfile=dist/crew-avatar.js && esbuild src/index.ts --bundle --format=iife --global-name=CrewAvatar --minify --outfile=dist/crew-avatar.iife.js"
+  },
+  "dependencies": {
+    "@crew-avatar/core": "workspace:^"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/im-ian/crew-avatar.git",
+    "directory": "packages/vanilla"
+  },
+  "keywords": [
+    "avatar",
+    "web-component",
+    "custom-element",
+    "svg",
+    "animation"
+  ],
+  "author": "im-ian",
+  "homepage": "https://github.com/im-ian/crew-avatar#readme",
+  "bugs": "https://github.com/im-ian/crew-avatar/issues"
+}
