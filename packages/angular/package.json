@@ -23,7 +23,8 @@
     "rxjs": "^7.8.0"
   },
   "publishConfig": {
-    "directory": "dist"
+    "directory": "dist",
+    "access": "public"
   },
   "repository": {
     "type": "git",

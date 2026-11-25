@@ -40,5 +40,8 @@
   ],
   "author": "im-ian",
   "homepage": "https://github.com/im-ian/crew-avatar#readme",
-  "bugs": "https://github.com/im-ian/crew-avatar/issues"
+  "bugs": "https://github.com/im-ian/crew-avatar/issues",
+  "publishConfig": {
+    "access": "public"
+  }
 }
