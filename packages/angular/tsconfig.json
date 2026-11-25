@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "declarationMap": false,
+    "inlineSources": true,
+    "verbatimModuleSyntax": false
+  },
+  "angularCompilerOptions": {
+    "compilationMode": "partial",
+    "strictTemplates": true,
+    "strictInjectionParameters": true
+  },
+  "include": ["src"]
+}
