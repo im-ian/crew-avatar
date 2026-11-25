@@ -1,0 +1,45 @@
+{
+  "name": "@crew-avatar/vue",
+  "version": "0.1.0",
+  "description": "crew-avatar for Vue 3: <CrewAvatar shape state color />.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && tsc -p ."
+  },
+  "dependencies": {
+    "@crew-avatar/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "vue": "^3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/im-ian/crew-avatar.git",
+    "directory": "packages/vue"
+  },
+  "keywords": [
+    "avatar",
+    "vue",
+    "svg",
+    "animation"
+  ],
+  "author": "im-ian",
+  "homepage": "https://github.com/im-ian/crew-avatar#readme",
+  "bugs": "https://github.com/im-ian/crew-avatar/issues"
+}
