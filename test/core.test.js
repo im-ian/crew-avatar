@@ -10,7 +10,7 @@ import {
   renderAvatarHTML,
   resolveFace,
   seededFace,
-} from "../dist/index.js";
+} from "../dist/core/index.js";
 
 test("50 shapes, each with complete geometry", () => {
   assert.equal(SHAPE_NAMES.length, 50);

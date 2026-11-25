@@ -1,18 +1,100 @@
 {
-  "name": "crew-avatar-monorepo",
-  "private": true,
+  "name": "crew-avatar",
+  "version": "0.2.0",
+  "description": "Animated SVG bot faces: 50 shapes, 8 states, 5 working motions. One package for plain HTML, React, Vue and Angular.",
+  "license": "MIT",
+  "author": "im-ian",
+  "homepage": "https://github.com/im-ian/crew-avatar#readme",
+  "bugs": "https://github.com/im-ian/crew-avatar/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/im-ian/crew-avatar.git"
+  },
+  "keywords": [
+    "avatar",
+    "bot",
+    "character",
+    "svg",
+    "animation",
+    "web-component",
+    "react",
+    "vue",
+    "angular"
+  ],
   "type": "module",
-  "packageManager": "pnpm@10.33.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/crew-avatar.iife.js",
+  "jsdelivr": "./dist/crew-avatar.iife.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "default": "./dist/react.js"
+    },
+    "./vue": {
+      "types": "./dist/vue.d.ts",
+      "default": "./dist/vue.js"
+    },
+    "./angular": {
+      "types": "./dist/angular.d.ts",
+      "default": "./dist/angular.js"
+    },
+    "./crew-avatar.css": "./dist/crew-avatar.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "third_party"
+  ],
+  "sideEffects": [
+    "./dist/index.js",
+    "./dist/crew-avatar.js",
+    "./dist/crew-avatar.iife.js",
+    "*.css"
+  ],
   "scripts": {
-    "build": "pnpm --filter @crew-avatar/core build && pnpm --filter './packages/*' --filter '!@crew-avatar/core' build",
-    "test": "pnpm --filter @crew-avatar/core test",
+    "build": "rm -rf dist && tsc -p tsconfig.json && ngc -p tsconfig.angular.json && node -e \"import('./dist/core/style.js').then(m=>require('fs').writeFileSync('dist/crew-avatar.css',m.CSS.trim()+'\\n'))\" && esbuild src/index.ts --bundle --format=esm --minify --outfile=dist/crew-avatar.js && esbuild src/index.ts --bundle --format=iife --global-name=CrewAvatar --minify --outfile=dist/crew-avatar.iife.js",
+    "test": "node --test test/*.test.js",
     "examples": "node examples/build.mjs",
-    "serve": "esbuild --servedir=. --serve=5173"
+    "serve": "esbuild --servedir=. --serve=5173",
+    "prepublishOnly": "pnpm build && pnpm test"
+  },
+  "peerDependencies": {
+    "@angular/core": ">=17.0.0",
+    "react": ">=18",
+    "vue": "^3.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@angular/core": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
   },
   "devDependencies": {
+    "@angular/common": "^22.3.0",
+    "@angular/compiler": "^22.3.0",
+    "@angular/compiler-cli": "^22.3.0",
+    "@angular/core": "^22.3.0",
+    "@angular/platform-browser": "^22.3.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "esbuild": "^0.25.0",
-    "typescript": "~6.0.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rxjs": "^7.8.0",
+    "typescript": "~6.0.0",
+    "vue": "^3.5.0"
   },
+  "packageManager": "pnpm@10.33.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"

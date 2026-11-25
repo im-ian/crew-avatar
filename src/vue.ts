@@ -1,7 +1,7 @@
 import { defineComponent, h, onBeforeUnmount, onMounted, onUpdated, ref, watch, type PropType } from "vue";
-import { mountAvatar, type AvatarHandle, type AvatarOptions, type AvatarState, type WorkLook } from "@crew-avatar/core";
+import { mountAvatar, type AvatarHandle, type AvatarOptions, type AvatarState, type WorkLook } from "./core/index.js";
 
-export * from "@crew-avatar/core";
+export * from "./core/index.js";
 
 /** `<Avatar shape="crown" state="working" :size="64" />` */
 export const Avatar = defineComponent({

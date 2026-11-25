@@ -1,6 +1,6 @@
-import { mountAvatar, type AvatarHandle, type AvatarOptions } from "@crew-avatar/core";
+import { mountAvatar, type AvatarHandle, type AvatarOptions } from "./core/index.js";
 
-export * from "@crew-avatar/core";
+export * from "./core/index.js";
 
 const ATTRS = ["shape", "color", "state", "look", "size", "seed", "label"] as const;
 
@@ -8,7 +8,10 @@ const ATTRS = ["shape", "color", "state", "look", "size", "seed", "label"] as co
  * `<crew-avatar shape="crown" color="#4da3ff" state="working" size="64"></crew-avatar>`
  * Light DOM, so the stylesheet and your CSS variables reach it.
  */
-export class Avatar extends HTMLElement {
+// Lets server-side code import this entry; the element only registers in a browser.
+const Base = (typeof HTMLElement === "undefined" ? class {} : HTMLElement) as typeof HTMLElement;
+
+export class Avatar extends Base {
   static observedAttributes = [...ATTRS];
   #handle: AvatarHandle | null = null;
 

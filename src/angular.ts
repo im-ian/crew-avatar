@@ -1,5 +1,7 @@
 import { Component, ElementRef, Input, ViewEncapsulation, inject, type OnChanges, type OnDestroy, type OnInit } from "@angular/core";
-import { mountAvatar, type AvatarHandle, type AvatarOptions, type AvatarState, type WorkLook } from "@crew-avatar/core";
+import { mountAvatar, type AvatarHandle, type AvatarOptions, type AvatarState, type WorkLook } from "./core/index.js";
+
+export * from "./core/index.js";
 
 /** `<crew-avatar shape="crown" state="working" [size]="64" />` */
 @Component({

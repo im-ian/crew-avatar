@@ -6,24 +6,27 @@
 
 Animated SVG bot faces with a mood. 50 shapes, 8 states and 5 working motions. The eyes follow your pointer. No runtime dependencies, and it honors `prefers-reduced-motion`.
 
-They started out as the bot faces in Crew. This repo ships the same engine for plain HTML, React, Vue and Angular.
+They started out as the bot faces in Crew. One package covers plain HTML, React, Vue and Angular:
 
-| Package | For |
+```sh
+npm install crew-avatar
+```
+
+| Import | For |
 | --- | --- |
-| [`@crew-avatar/vanilla`](packages/vanilla) | Plain HTML: a `<crew-avatar>` custom element plus a drop-in `<script>` build |
-| [`@crew-avatar/react`](packages/react) | React 18+ `<Avatar />` |
-| [`@crew-avatar/vue`](packages/vue) | Vue 3 `<Avatar />` |
-| [`@crew-avatar/angular`](packages/angular) | Angular 17+ standalone `<crew-avatar>` |
-| [`@crew-avatar/core`](packages/core) | The framework-free engine the others wrap: shape data, renderer, `mountAvatar()` |
+| `crew-avatar` | Plain HTML: the `<crew-avatar>` custom element, plus the engine (`mountAvatar()`, shape data) |
+| `crew-avatar/react` | React 18+ `<Avatar />` |
+| `crew-avatar/vue` | Vue 3 `<Avatar />` |
+| `crew-avatar/angular` | Angular 17+ standalone `<crew-avatar>` |
 
-> Not on npm yet. Until it is, clone the repo and run `pnpm install && pnpm build`, then point at `packages/*/dist`.
+React, Vue and Angular are optional peer dependencies, so installing the package pulls in none of them.
 
 ## Usage
 
 ### HTML
 
 ```html
-<script type="module" src="https://unpkg.com/@crew-avatar/vanilla/dist/crew-avatar.js"></script>
+<script type="module" src="https://unpkg.com/crew-avatar/dist/crew-avatar.js"></script>
 
 <crew-avatar shape="crown" color="#4da3ff" state="working" size="64"></crew-avatar>
 ```
@@ -33,7 +36,7 @@ Change any attribute and the face updates. For a classic script tag, `dist/crew-
 ### React
 
 ```tsx
-import { Avatar } from "@crew-avatar/react";
+import { Avatar } from "crew-avatar/react";
 
 <Avatar shape="cup" state={busy ? "working" : "idle"} size={48} seed={user.id} label={user.name} />;
 ```
@@ -42,7 +45,7 @@ import { Avatar } from "@crew-avatar/react";
 
 ```vue
 <script setup>
-import { Avatar } from "@crew-avatar/vue";
+import { Avatar } from "crew-avatar/vue";
 </script>
 
 <template>
@@ -53,7 +56,7 @@ import { Avatar } from "@crew-avatar/vue";
 ### Angular
 
 ```ts
-import { Avatar } from "@crew-avatar/angular";
+import { Avatar } from "crew-avatar/angular";
 
 @Component({
   imports: [Avatar],
@@ -64,18 +67,18 @@ import { Avatar } from "@crew-avatar/angular";
 ### Anything else
 
 ```js
-import { mountAvatar } from "@crew-avatar/core";
+import { mountAvatar } from "crew-avatar";
 
 const avatar = mountAvatar(document.querySelector("#me"), { shape: "star", state: "idle" });
 avatar.update({ shape: "star", state: "success" });
 avatar.destroy();
 ```
 
-The stylesheet is injected once on first mount. If you would rather link it yourself, it ships as `@crew-avatar/core/crew-avatar.css`.
+The stylesheet is injected once on first mount. If you would rather link it yourself, it ships as `crew-avatar/crew-avatar.css`.
 
 ## Options
 
-All packages take the same options, as props, inputs or attributes.
+Every entry takes the same options, as props, inputs or attributes.
 
 | Option | Type | Default | |
 | --- | --- | --- | --- |
@@ -126,7 +129,7 @@ Below 28px the props hide themselves and only the face moves.
 
 ```sh
 pnpm install
-pnpm build       # all packages
+pnpm build       # dist/ for every entry
 pnpm test        # core tests
 pnpm examples    # bundle the React, Vue and Angular demos
 pnpm serve       # http://localhost:5173/examples/vanilla/ (also /react/, /vue/, /angular/)
@@ -136,7 +139,7 @@ pnpm serve       # http://localhost:5173/examples/vanilla/ (also /react/, /vue/,
 
 ## Credits
 
-17 of the shapes (square, slanted, arch, fan, arrow, semi-circle, oval, clam-shell, gem, sunny, ghostish, clover, burst, flower, pixel-circle, pixel-triangle, bun) are [Material Shapes](https://github.com/androidx/androidx/blob/9a589fa61f8661e0cbef9123dcc98d3c1f655fc7/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt) contours, © 2024 The Android Open Source Project, under the Apache License 2.0. They came by way of [Sidekick Studio](https://github.com/hanana-kick/sidekick). See [`packages/core/third_party/material-shapes`](packages/core/third_party/material-shapes).
+17 of the shapes (square, slanted, arch, fan, arrow, semi-circle, oval, clam-shell, gem, sunny, ghostish, clover, burst, flower, pixel-circle, pixel-triangle, bun) are [Material Shapes](https://github.com/androidx/androidx/blob/9a589fa61f8661e0cbef9123dcc98d3c1f655fc7/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt) contours, © 2024 The Android Open Source Project, under the Apache License 2.0. They came by way of [Sidekick Studio](https://github.com/hanana-kick/sidekick). See [`third_party/material-shapes`](third_party/material-shapes).
 
 ## License
 

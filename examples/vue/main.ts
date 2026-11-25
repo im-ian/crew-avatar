@@ -1,5 +1,5 @@
 import { computed, createApp, ref } from "vue";
-import { Avatar, STATES } from "@crew-avatar/vue";
+import { Avatar, STATES } from "crew-avatar/vue";
 
 createApp({
   components: { Avatar },
@@ -10,7 +10,7 @@ createApp({
   },
   template: `
     <main>
-      <h1>@crew-avatar/vue</h1>
+      <h1>crew-avatar/vue</h1>
       <div class="hero">
         <Avatar shape="cup" :state="state" :size="96" seed="hero" :label="'cup, ' + state" />
         <button @click="n++">Next state ({{ state }})</button>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, type CSSProperties, type HTMLAttributes } from "react";
-import { mountAvatar, type AvatarHandle, type AvatarOptions } from "@crew-avatar/core";
+import { mountAvatar, type AvatarHandle, type AvatarOptions } from "./core/index.js";
 
-export * from "@crew-avatar/core";
+export * from "./core/index.js";
 
 export type AvatarProps = AvatarOptions &
   Omit<HTMLAttributes<HTMLSpanElement>, "color"> & { className?: string; style?: CSSProperties };
