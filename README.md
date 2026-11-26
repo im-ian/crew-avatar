@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/thumbnail.png" alt="crew-avatar: 65 animated bot faces in 8 states" width="100%" />
+  <img src=".github/thumbnail.png" alt="crew-avatar: 90 animated bot faces in 8 states" width="100%" />
 </p>
 
 # crew-avatar
