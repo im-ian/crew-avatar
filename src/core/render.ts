@@ -36,7 +36,9 @@ export function seededFace(seed: string): { shape: ShapeName; color: string } {
 
 export function resolveFace(seed?: string | null, shape?: string | null, color?: string | null) {
   const fallback = seededFace(String(seed || "agent"));
-  return { shape: isShape(shape) ? shape : fallback.shape, color: normalizeHex(color) || fallback.color };
+  const picked = isShape(shape) ? shape : fallback.shape;
+  const own = isShape(shape) ? (SHAPES[shape] as ShapeDef).color : undefined;
+  return { shape: picked, color: normalizeHex(color) || own || fallback.color };
 }
 
 /** Seconds (0–8.2) that desync faces with different seeds. */

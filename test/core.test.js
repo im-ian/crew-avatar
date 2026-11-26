@@ -12,8 +12,8 @@ import {
   seededFace,
 } from "../dist/core/index.js";
 
-test("50 shapes, each with complete geometry", () => {
-  assert.equal(SHAPE_NAMES.length, 50);
+test("65 shapes, each with complete geometry", () => {
+  assert.equal(SHAPE_NAMES.length, 65);
   for (const name of SHAPE_NAMES) {
     const s = SHAPES[name];
     assert.match(s.markup, /currentColor/, name);
@@ -29,6 +29,9 @@ test("colors: only hex reaches the markup", () => {
   assert.equal(normalizeHex('red" onload="x'), null);
   assert.equal(normalizeHex("rgb(0,0,0)"), null);
   assert.equal(resolveFace("x", "nope", "nope").shape, seededFace("x").shape);
+  // Parchment brings its own color unless one is given.
+  assert.equal(resolveFace("x", "parchment", null).color, SHAPES.parchment.color);
+  assert.equal(resolveFace("x", "parchment", "#4da3ff").color, "#4da3ff");
 });
 
 test("seeded faces are stable", () => {
