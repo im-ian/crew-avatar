@@ -1,7 +1,7 @@
 {
   "name": "crew-avatar",
   "version": "0.2.0",
-  "description": "Animated SVG bot faces: 55 shapes, 8 states, 5 working motions. One package for plain HTML, React, Vue and Angular.",
+  "description": "Animated SVG bot faces: 60 shapes, 8 states, 5 working motions. One package for plain HTML, React, Vue and Angular.",
   "license": "MIT",
   "author": "im-ian",
   "homepage": "https://github.com/im-ian/crew-avatar#readme",
