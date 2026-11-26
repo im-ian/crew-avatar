@@ -5,9 +5,9 @@ Licensed under the Apache License, Version 2.0. See LICENSE in this directory.
 Source: AndroidX Compose MaterialShapes.kt
 https://github.com/androidx/androidx/blob/9a589fa61f8661e0cbef9123dcc98d3c1f655fc7/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt
 
-Used in src/core/shapes.ts for these 17 shapes: square, slanted, arch,
+Used in src/core/shapes.ts for these 20 shapes: square, slanted, arch,
 fan, arrow, semi-circle, oval, clam-shell, gem, sunny, ghostish, clover, burst,
-flower, pixel-circle, pixel-triangle, bun.
+flower, pixel-circle, pixel-triangle, bun, cookie, puffy, puffy-diamond.
 
 The contours came by way of Sidekick Studio (https://github.com/hanana-kick/sidekick),
 which generated them with androidx.graphics:graphics-shapes-android 1.1.0.

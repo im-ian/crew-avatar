@@ -135,12 +135,12 @@ export const CSS = `
 .crew-cel-spin,.crew-cel-pulse{transform-box:fill-box;transform-origin:center}
 .crew-cel-spin{animation:crew-cel-spin 26s linear infinite;animation-delay:calc(var(--crew-avatar-phase, 0) * -3s)}
 .crew-cel-pulse{animation:crew-cel-pulse 3.4s ease-in-out infinite;animation-delay:calc(var(--crew-avatar-phase, 0) * -.4s)}
-.crew-cel-crater{opacity:.13;animation:crew-cel-crater 7s ease-in-out infinite}
+.crew-cel-crater{opacity:.26;animation:crew-cel-crater 7s ease-in-out infinite}
 .crew-cel-crater:nth-of-type(2){animation-delay:-2.3s}
 .crew-cel-crater:nth-of-type(3){animation-delay:-4.6s}
 @keyframes crew-cel-spin{to{transform:rotate(360deg)}}
 @keyframes crew-cel-pulse{0%,to{transform:scale(1)}50%{transform:scale(1.04)}}
-@keyframes crew-cel-crater{0%,to{opacity:.09}50%{opacity:.2}}
+@keyframes crew-cel-crater{0%,to{opacity:.22}50%{opacity:.34}}
 .crew-cel-flame,.crew-cel-tongue,.crew-cel-core{transform-box:fill-box;transform-origin:50% 100%}
 .crew-cel-flame{animation:crew-cel-flame 1.3s ease-in-out infinite;animation-delay:calc(var(--crew-avatar-phase, 0) * -.3s)}
 .crew-cel-core{animation:crew-cel-core 1.9s ease-in-out infinite}
