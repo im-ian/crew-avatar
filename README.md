@@ -1,10 +1,10 @@
 <p align="center">
-  <img src=".github/thumbnail.png" alt="crew-avatar: 90 animated bot faces in 8 states" width="100%" />
+  <img src=".github/thumbnail.png" alt="crew-avatar: 92 animated bot faces in 8 states" width="100%" />
 </p>
 
 # crew-avatar
 
-Animated SVG bot faces with a mood. 89 shapes, 8 states and 5 working motions. The eyes follow your pointer. No runtime dependencies, and it honors `prefers-reduced-motion`.
+Animated SVG bot faces with a mood. 92 shapes, 8 states and 5 working motions. The eyes follow your pointer. No runtime dependencies, and it honors `prefers-reduced-motion`.
 
 They started out as the bot faces in Crew. One package covers plain HTML, React, Vue and Angular:
 
@@ -82,7 +82,7 @@ Every entry takes the same options, as props, inputs or attributes.
 
 | Option | Type | Default | |
 | --- | --- | --- | --- |
-| `shape` | one of `SHAPE_NAMES` | from `seed` | `circle`, `crown`, `cup`, `full-moon`, … ([all 89](examples/vanilla/index.html)) |
+| `shape` | one of `SHAPE_NAMES` | from `seed` | `circle`, `crown`, `cup`, `full-moon`, … ([all 92](examples/vanilla/index.html)) |
 | `color` | `#rgb` / `#rrggbb` | from `seed` | Only hex is accepted. Anything else falls back to the seeded color. `parchment` defaults to its parchment tone instead. |
 | `state` | see below | `idle` | |
 | `look` | `hustle` `magnifier` `laptop` `checklist` `keyboard` | random | The working motion. When it is left out, each run draws a new one and never repeats the last. |
@@ -139,7 +139,7 @@ pnpm serve       # http://localhost:5173/examples/vanilla/ (also /react/, /vue/,
 
 ## Credits
 
-17 of the shapes (square, slanted, arch, fan, arrow, semi-circle, oval, clam-shell, gem, sunny, ghostish, clover, burst, flower, pixel-circle, pixel-triangle, bun) are [Material Shapes](https://github.com/androidx/androidx/blob/9a589fa61f8661e0cbef9123dcc98d3c1f655fc7/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt) contours, © 2024 The Android Open Source Project, under the Apache License 2.0. They came by way of [Sidekick Studio](https://github.com/hanana-kick/sidekick). See [`third_party/material-shapes`](third_party/material-shapes).
+20 of the shapes (square, slanted, arch, fan, arrow, semi-circle, oval, clam-shell, gem, sunny, ghostish, clover, burst, flower, pixel-circle, pixel-triangle, bun, cookie, puffy, puffy-diamond) are [Material Shapes](https://github.com/androidx/androidx/blob/9a589fa61f8661e0cbef9123dcc98d3c1f655fc7/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt) contours, © 2024 The Android Open Source Project, under the Apache License 2.0. They came by way of [Sidekick Studio](https://github.com/hanana-kick/sidekick). See [`third_party/material-shapes`](third_party/material-shapes).
 
 ## License
 
