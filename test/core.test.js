@@ -12,8 +12,8 @@ import {
   seededFace,
 } from "../dist/core/index.js";
 
-test("52 shapes, each with complete geometry", () => {
-  assert.equal(SHAPE_NAMES.length, 52);
+test("54 shapes, each with complete geometry", () => {
+  assert.equal(SHAPE_NAMES.length, 54);
   for (const name of SHAPE_NAMES) {
     const s = SHAPES[name];
     assert.match(s.markup, /currentColor/, name);

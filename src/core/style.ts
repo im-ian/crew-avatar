@@ -141,7 +141,22 @@ export const CSS = `
 @keyframes crew-cel-spin{to{transform:rotate(360deg)}}
 @keyframes crew-cel-pulse{0%,to{transform:scale(1)}50%{transform:scale(1.04)}}
 @keyframes crew-cel-crater{0%,to{opacity:.09}50%{opacity:.2}}
-@media(prefers-reduced-motion:reduce){.crew-cel-spin,.crew-cel-pulse,.crew-cel-dark,.crew-cel-crater{animation:none}}`;
+.crew-cel-flame,.crew-cel-tongue,.crew-cel-core{transform-box:fill-box;transform-origin:50% 100%}
+.crew-cel-flame{animation:crew-cel-flame 1.3s ease-in-out infinite;animation-delay:calc(var(--crew-avatar-phase, 0) * -.3s)}
+.crew-cel-core{animation:crew-cel-core 1.9s ease-in-out infinite}
+.crew-cel-tongue{animation:crew-cel-lick-l .9s ease-in-out infinite}
+.crew-cel-tongue:nth-of-type(2){animation:crew-cel-lick-r 1.15s ease-in-out infinite;animation-delay:-.4s}
+.crew-cel-tongue:nth-of-type(3){animation:crew-cel-lick-c 1.05s ease-in-out infinite;animation-delay:-.25s}
+.crew-cel-spark{opacity:0;transform-box:fill-box;transform-origin:center;animation:crew-cel-spark 1.8s ease-out infinite}
+.crew-cel-spark:nth-of-type(2){animation-duration:2.2s;animation-delay:-.7s}
+.crew-cel-spark:nth-of-type(3){animation-duration:1.6s;animation-delay:-1.3s}
+@keyframes crew-cel-flame{0%,to{transform:scale(1) skewX(0)}20%{transform:scale(1.04,.9) skewX(7deg)}45%{transform:scale(.95,1.12) skewX(-6deg)}70%{transform:scale(1.02,.96) skewX(4deg)}85%{transform:scale(.98,1.06) skewX(-3deg)}}
+@keyframes crew-cel-core{0%,to{transform:scale(1)}50%{transform:scale(1.03,.97)}}
+@keyframes crew-cel-lick-l{0%,to{transform:scale(1) rotate(0)}40%{transform:scale(.7,1.25) rotate(-10deg)}70%{transform:scale(1.05,.75) rotate(4deg)}}
+@keyframes crew-cel-lick-r{0%,to{transform:scale(1) rotate(0)}35%{transform:scale(1.05,.7) rotate(-5deg)}65%{transform:scale(.75,1.3) rotate(10deg)}}
+@keyframes crew-cel-lick-c{0%,to{transform:scale(1) rotate(0)}40%{transform:scale(.88,1.08) rotate(-5deg)}70%{transform:scale(1.03,.9) rotate(2deg)}}
+@keyframes crew-cel-spark{0%{opacity:0;transform:translate(0,8px) scale(.7)}20%{opacity:1}60%{transform:translate(3px,-6px) scale(.6)}to{opacity:0;transform:translate(-2px,-16px) scale(.2)}}
+@media(prefers-reduced-motion:reduce){.crew-cel-spin,.crew-cel-pulse,.crew-cel-dark,.crew-cel-crater,.crew-cel-flame,.crew-cel-tongue,.crew-cel-core{animation:none}.crew-cel-spark{display:none}}`;
 
 const STYLE_ID = "crew-avatar-style";
 
