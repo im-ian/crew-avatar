@@ -7,6 +7,8 @@ export type ShapeDef = {
   ink: number;
   /** Centre of the eye pair, and half the gap between the eyes (default 7.2). */
   eyes: { x: number; y: number; dx?: number };
+  /** The color a face of this shape gets when none is given, for shapes whose look depends on it. */
+  color?: string;
 };
 
 /** What a bot is doing. */
@@ -21,7 +23,7 @@ export type WorkLook = "hustle" | "magnifier" | "laptop" | "checklist" | "keyboa
 export type AvatarOptions = {
   /** One of SHAPE_NAMES. Unknown or missing: picked from `seed`. */
   shape?: string | null;
-  /** Hex color (#rgb or #rrggbb). Anything else: picked from `seed`. */
+  /** Hex color (#rgb or #rrggbb). Anything else: the shape's own color if it has one (parchment), else picked from `seed`. */
   color?: string | null;
   /** Default "idle". */
   state?: AvatarState | null;

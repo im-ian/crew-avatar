@@ -4,7 +4,7 @@
 
 # crew-avatar
 
-Animated SVG bot faces with a mood. 54 shapes, 8 states and 5 working motions. The eyes follow your pointer. No runtime dependencies, and it honors `prefers-reduced-motion`.
+Animated SVG bot faces with a mood. 55 shapes, 8 states and 5 working motions. The eyes follow your pointer. No runtime dependencies, and it honors `prefers-reduced-motion`.
 
 They started out as the bot faces in Crew. One package covers plain HTML, React, Vue and Angular:
 
@@ -82,8 +82,8 @@ Every entry takes the same options, as props, inputs or attributes.
 
 | Option | Type | Default | |
 | --- | --- | --- | --- |
-| `shape` | one of `SHAPE_NAMES` | from `seed` | `circle`, `crown`, `cup`, `full-moon`, … ([all 54](examples/vanilla/index.html)) |
-| `color` | `#rgb` / `#rrggbb` | from `seed` | Only hex is accepted. Anything else falls back to the seeded color. |
+| `shape` | one of `SHAPE_NAMES` | from `seed` | `circle`, `crown`, `cup`, `full-moon`, … ([all 55](examples/vanilla/index.html)) |
+| `color` | `#rgb` / `#rrggbb` | from `seed` | Only hex is accepted. Anything else falls back to the seeded color. `parchment` defaults to its parchment tone instead. |
 | `state` | see below | `idle` | |
 | `look` | `hustle` `magnifier` `laptop` `checklist` `keyboard` | random | The working motion. When it is left out, each run draws a new one and never repeats the last. |
 | `size` | number (px) or CSS length | `40px` | Same as setting `--crew-avatar-size`. |
